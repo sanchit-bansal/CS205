@@ -1,12 +1,33 @@
-object Q2{
-	def main(args: Array[String]){}
-		def Split(Num1: List[Int]): (List[Int], List[Int])= {	
-		Num1 match{
-			case Nil => (Nil, Nil)
-			case hd::tail if Num1.length==1 => (List(hd), Nil) 
-			case hd::tail if Num1.length>1 => (hd::Split(tail.init)._1, Split(tail.init)._2:::List(Num1.last))
-		}
-		}
-		Console.println("Splitting (1,2,3,4)" + Split(List(1,2,3,4)))
-}
+object Q2 {
+  
+  def main(args: Array[String]): Unit={
+    
+    val mainlist = List(1,2,3,4,5);
+    var n=(mainlist.length)/2
+    var list1: List[Int] =List()
+    var list2: List[Int] =List()
+    var count:Int =0 
+        
+    def Split(lst: List[Int]): List[Int]={
 
+      if (count ==n ){
+        list2=list2:::lst
+        return lst}
+      else
+      {
+        list1=list1:+lst.head;
+        count = count + 1
+        Split(lst.tail)
+      }
+      
+      }
+   
+  println("HERE: "+ mainlist) 
+  Split(mainlist)
+  println(list1)
+ println(list2)
+  }
+}
+//n=list.length
+//Create two lists of half the size
+//

@@ -7,7 +7,6 @@ object Q5 {
     else if(num1.head<=x)
       num1.head::pivotSort(num1.tail, x)
     else {
-       
       pivotSort(num1.tail, x):+num1.head
       
     }
