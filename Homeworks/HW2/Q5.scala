@@ -13,7 +13,7 @@ object Q5 {
   
 }
   def main(args: Array[String]): Unit = {
-    var list1 = List(1,2,4,3,9,16)
+    var list1 = List(5,2,4,7,13,14, 3)
     println(pivotSort(list1,10))
   }
 }
