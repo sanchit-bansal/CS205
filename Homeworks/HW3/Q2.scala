@@ -1,22 +1,28 @@
-object Q2{
-
-    def main(args: Array[String]): Unit = {
-        def split(lst: List[Int]): (List[Int], List[Int]) = {
+object Q2{    
+       def split(l: List[Int]): (List[Int], List[Int]) = {
+            val stack1 = new scala.collection.mutable.Stack[List[Int]]
+            val stack2 = new scala.collection.mutable.Stack[List[Int]]
             var lst1: List[Int] = List()
             var lst2: List[Int] = List()
-            var lst3: List[Int] = lst
+            var lst: List[Int] = l
 
-            while (lst3 != Nil) {
-                lst1 = lst1:+(lst3.head)
-                lst3 = lst3.tail
-
-                if (lst3 != Nil) {
-                    lst2 = lst3.last::lst2
-                    lst3 = lst3.init
+            while (lst != Nil) {
+                lst1 = lst1:+(lst.head)
+                lst = lst.tail
+                stack1.push(lst1)
+                if (lst != Nil) {
+                    lst2 = lst.last::lst2
+                    stack2.push(lst2)
+                    lst = lst.init
                 }
             }
-            return (lst1, lst2)
+            return (stack1.pop, stack2.pop)
         }
-        Console.println(split(List(1,9,15,4,5,11,4,5,2)))
-    }
+        
+       
+     def main(args: Array[String]): Unit={
+         println(split(List(99,101,120,150,15,23)))} 
 }
+
+
+
