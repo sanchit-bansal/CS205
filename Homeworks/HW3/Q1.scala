@@ -1,31 +1,42 @@
-class Queue(){
-  var x:List[Any]= Nil
-  
-  def equals(that: Queue):Boolean= (this.x,that.x) match{
-    case (Nil,Nil)=> true
-    case (h1::rest1, h2::rest2) => (h1.equals(h2)) && (rest1.equals(rest2))
-    case _ => false
-  }
+object Q1{
 
-  override def hashC():Int={
-    var counter = 1
-    this.x.foreach{
-      counter*=_.hashC()
-    }
-   return counter
-  }
+	class QueueOps() {
+		var Queue: List[Any] = Nil
 
-  def enQueue(b:Any):Unit={
-    this.x = this.x:+b
-  }
+		def enQueue(input:Any):Unit=
+			this.Queue=this.Queue:::List(input)
 
-  def deQueue():Unit= this.x match{
-    case Nil => Nil
-    case head::rest => this.x = rest
-    }
+		def deQueue():Unit=
+			this.Queue match{
+				case Nil => this.Queue = Nil
+				case head::tail => this.Queue = tail
+		}
 
-  def printQ():Unit={
-    println(x)
-  }
+		override def hashCode():Int={
+			var x:Int=0
+			this.Queue.foreach{
+				x+=_.hashCode()
+			}
+			x
+		}
+
+		def printQueue():Unit={	
+			println(this.Queue)
+		}
+
+	}
+
+	def main(args: Array[String]):Unit=
+	{
+		var Runner = new QueueOps()
+		Runner.enQueue(99)	
+		Runner.enQueue(100)
+		Runner.enQueue(101)
+		Runner.printQueue()
+		Runner.deQueue()
+		Runner.printQueue()
+    Runner.deQueue()
+    Runner.printQueue()
+	}
 
 }
